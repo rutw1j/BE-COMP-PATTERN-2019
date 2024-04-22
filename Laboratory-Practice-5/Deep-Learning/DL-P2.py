@@ -67,8 +67,6 @@ print(f"{'Accuracy:':<13}{accuracy}")
 print(f"{'Precision':<13}{precision}")
 print(f"{'Recall':<13}{recall}")
 print(f"{'F1 Score':<13}{f1}")
-print('\n\nCONFUSION MATRIX')
-print(conf_matrix)
 
 
 # Plotting Confusion Matrix

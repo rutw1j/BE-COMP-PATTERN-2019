@@ -1,3 +1,12 @@
+/*
+To run CUDA in colab
+
+!pip install git+https://github.com/andreinechaev/nvcc4jupyter.git
+%load_ext nvcc4jupyter
+
+%%cuda
+*/
+
 #include <iostream>
 #include <cuda_runtime.h>
 
@@ -66,6 +75,4 @@ int main() {
     delete[] h_a;
     delete[] h_b;
     delete[] h_c;
-
-    return 0;
 }
