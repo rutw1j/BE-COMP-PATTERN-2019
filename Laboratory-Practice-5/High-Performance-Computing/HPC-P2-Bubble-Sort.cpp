@@ -37,29 +37,29 @@ void ParallelBubbleSort(int arr[], int arr_size) {
 
 int main() {
 
-    const int size = 10000;
-    int arr[size], arr_copy[size];
+    const int arr_size = 10000;
+    int arr[arr_size], arr_copy[arr_size];
 
     // Initialize input arr
     srand(time(NULL));
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < arr_size; i++) {
         arr[i] = rand() % 10000;
         arr_copy[i] = arr[i];
     }
 
     auto start = high_resolution_clock::now();
-    BubbleSort(arr_copy, size);
+    BubbleSort(arr_copy, arr_size);
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end-start);
     cout << "\n" << "Sequential Bubble Sort  : " << duration.count() / 1000.0 << " seconds";
 
     // Reinitialize input arr
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < arr_size; i++) {
         arr_copy[i] = arr[i];
     }
 
     start = high_resolution_clock::now();
-    ParallelBubbleSort(arr_copy, size);
+    ParallelBubbleSort(arr_copy, arr_size);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end-start);
     cout << "\n" << "Parallel Bubble Sort    : " << duration.count() / 1000.0 << " seconds";

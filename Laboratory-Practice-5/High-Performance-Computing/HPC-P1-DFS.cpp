@@ -20,7 +20,7 @@
                 adj[v].push_back(u);
             }
 
-            void DFS(int start) {
+            void ParallelDFS(int start) {
                 vector<bool> visited(V, false);
                 stack<int> s;
 
@@ -57,7 +57,7 @@
         graph.addEdge(2, 5);
         graph.addEdge(2, 6);
 
-        cout << "\n" << "DFS TRAVERSAL" << endl;
-        graph.DFS(0);
+        cout << "\nDFS TRAVERSA\nL";
+        graph.ParallelDFS(0);
         cout << "End";
     }

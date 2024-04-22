@@ -1,26 +1,25 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <omp.h>
+#include<iostream>
+#include<omp.h>
+#include<vector>
+#include<queue>
 
 using namespace std;
 
 
 class Graph {
-
     private:
         int V;
-        vector <vector<int>> adj;
+        vector<vector<int>> adj;
 
     public:
-        Graph(int vertices) : V(vertices), adj(vertices) {}
+        Graph(int vertices): V(vertices), adj(vertices) {}
 
-        void addEdge(int u, int v) {
+        void add_edge(int u, int v) {
             adj[u].push_back(v);
             adj[v].push_back(u);
         }
 
-        void BFS(int start) {
+        void ParallelBFS(int start) {
             vector<bool> visited(V, false);
             queue<int> q;
 
@@ -33,7 +32,7 @@ class Graph {
                 q.pop();
 
                 #pragma omp parallel for
-                for ( int i = 0; i < adj[current].size(); i++ ) {
+                for (int i = 0; i < adj[current].size(); i++) {
                     int neighbour = adj[current][i];
                     if (!visited[neighbour]) {
                         visited[neighbour] = true;
@@ -47,15 +46,15 @@ class Graph {
 
 int main() {
     Graph graph(7);
-
-    graph.addEdge(0, 1);
-    graph.addEdge(0, 2);
-    graph.addEdge(1, 3);
-    graph.addEdge(1, 4);
-    graph.addEdge(2, 5);
-    graph.addEdge(2, 6);
-
-    cout << "BFS TRAVERSAL" << endl;
-    graph.BFS(0);
+    
+    graph.add_edge(0, 1);
+    graph.add_edge(0, 2);
+    graph.add_edge(1, 3);
+    graph.add_edge(1, 4);
+    graph.add_edge(2, 5);
+    graph.add_edge(2, 6);
+    
+    cout << "\nBFS TRAVERSAL\n";
+    graph.ParallelBFS(0);
     cout << "End";
 }
