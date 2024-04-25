@@ -45,8 +45,8 @@ history = model.fit(x_train, y_train, epochs=5, batch_size=32, validation_data=(
 
 
 # Evaluate the model on the test set
-loss, acc = model.evaluate(x_test, y_test, batch_size=128)
-print(f"{'Test accuracy:':<15}{acc}, {'Test loss:':<15}{loss}")
+test_loss, test_acc = model.evaluate(x_test, y_test, batch_size=128)
+print(f"{'Test accuracy:':<15}{test_acc}, {'Test loss:':<15}{test_loss}")
 
 
 # Make Predictions
@@ -66,7 +66,7 @@ print('\n\nMODEL EVALUATION RESULTS\n')
 print(f"{'Accuracy:':<13}{accuracy}")
 print(f"{'Precision':<13}{precision}")
 print(f"{'Recall':<13}{recall}")
-print(f"{'F1 Score':<13}{f1}")
+print(f"{'F1 Score':<13}{f1}\n\n")
 
 
 # Plotting Confusion Matrix
@@ -75,4 +75,20 @@ sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues", cbar=False)
 plt.xlabel("Predicted labels")
 plt.ylabel("True labels")
 plt.title("Confusion Matrix")
+plt.show()
+
+
+# Visualize training history
+plt.plot(history.history['accuracy'], label='Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+
+plt.plot(history.history['loss'], label='Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
 plt.show()

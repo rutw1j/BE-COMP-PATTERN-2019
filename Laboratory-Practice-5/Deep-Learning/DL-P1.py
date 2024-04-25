@@ -49,8 +49,8 @@ history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_spli
 
 
 # Evaluate the model
-loss = model.evaluate(X_test, y_test, verbose=0)
-print(f"{'Test Loss (MSE): '}{loss}")
+test_loss = model.evaluate(X_test, y_test, verbose=0)
+print(f"{'Test Loss (MSE): '}{test_loss}")
 
 
 # Make predictions
@@ -73,7 +73,7 @@ print(f"{'Mean Squared Error (MSE):':<34}{mse}")
 print(f"{'Root Mean Squared Error (RMSE):':<34}{rmse}")
 print(f"{'R-squared (R2):':<34}{r2}")
 print(f"{'Explained Variance Score:':<34}{explained_variance}")
-print(f"{'Median Absolute Error:':<34}{median_absolute}")
+print(f"{'Median Absolute Error:':<34}{median_absolute}\n\n")
 
 
 # Visualize training history
